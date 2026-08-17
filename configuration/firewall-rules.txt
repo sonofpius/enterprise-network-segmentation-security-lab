@@ -1,0 +1,84 @@
+OPNsense Firewall Rules
+=======================
+
+IT RULES
+--------
+ 1. Allow IT →  ANYWHERE FOR ADMINITRATIVE AND TORUBLE SHOOTING PURPOSES BOTH INTERNAL NETWROKS AND THE INTERNET
+    Source: IT_NET
+    Destination: ANY
+    Destination Port: ANY
+    Action: PASS
+ 
+
+
+HR RULES
+--------
+
+1. Allow HR → AD_SERVICES
+   Source: HR_NET
+   Destination: Domain Controller
+   Destination Port: AD_SERVICES
+   Action: PASS
+
+2. Block HR → IT_NET
+   Source: HR_NET
+   Destination: IT_NET
+   Action: BLOCK
+
+3. Block HR → EXECUTIVE_NET
+   Source: HR_NET
+   Destination: EXECUTIVE_NET
+   Action: BLOCK
+
+4. Block HR → FINANCE_NET
+   Source: HR_NET
+   Destination: FIANCE_NET
+   Action: BLOCK
+
+5. Block HR → SALES_NET
+   Source: HR_NET
+   Destination: SALES_NET
+   Action: BLOCK
+
+6. Block HR → ENGINEERING_NET
+   Source: HR_NET
+   Destination: ENGINEERING_NET
+   Action: BLOCK
+
+
+7. Allow HR → Internet
+   Source: HR_NET
+   Destination: Any
+   Action: PASS
+  
+  
+  THIS RULE WILL BE ENABLED FOR ALL OTHER DEPATMENTS
+
+GUEST RULES
+-----------
+
+1.  Block Guest → Internal Networks
+   Source: GUEST_NET
+   Destination: Internal Network Aliases
+   Action: BLOCK
+
+2.Allow Guest → Internet
+   Source: GUEST_NET
+   Destination: Any
+   Action: PASS
+
+
+DMZ RULES
+---------
+
+1. Block DMZ → Internal Networks
+   Source: DMZ_NET
+   Destination: Internal Network Aliases
+   Action: BLOCK
+
+2. Allow DMZ → INETERNET
+   source: DMZ_NET
+   Destination: Any
+   Action: PASS
+
+ 

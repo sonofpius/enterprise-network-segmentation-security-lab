@@ -1,0 +1,20 @@
+DMZ PORT FORWARD
+
+WAN TCP WEB_PORTS (HTTP/HTTPS)
+        ↓
+DMZ Web Server TCP WEB_PORTS (HTTP/HTTPS)
+
+
+
+
+
+
+Internet
+   ↓
+Public IP
+   ↓
+OPNsense WAN
+   ↓
+OPNsense NAT
+   ↓
+DMZ Web Server

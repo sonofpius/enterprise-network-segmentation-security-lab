@@ -1,0 +1,120 @@
+OPNsense Firewall Aliases
+=========================
+
+
+Alias Name: AD_SERVICES
+Description: departments access to active directory services
+Type: ports
+Value(s): 
+53
+88
+389
+455
+464
+636
+3268
+3269
+
+Purpose: Allow authorized internal networks to communicate with
+the Domain Controller for DNS and Active Directory services.
+
+Used By:
+-HR → Domain Controller
+-Finance → Domain Controller
+-Sales → Domain Controller
+-Engineering → Domain Controller
+-Executive → Domain Controller
+
+
+
+
+
+Alias Name: DOMAIN_CONTROLLER
+Description: identify the domain controller
+Type: network
+Value(s): 
+192.168.10.110
+
+Purpose: point the internal network to the domain controller to access it services
+
+Used By:
+-HR → Domain Controller
+-Finance → Domain Controller
+-Sales → Domain Controller
+-Engineering → Domain Controller
+-Executive → Domain Controller
+
+
+
+
+Alias Name: INETRNAL_NETWROKS
+Description: all internal vlan networks
+Type: networks
+Value(s): 
+192.168.10.0/24
+192.168.20.0/24
+192.168.30.0/24
+192.168.40.0/24
+192.168.50.0/24
+192.168.60.0/24
+192.168.70.0/24
+
+Purpose: make it easier to attach a rule that affects all internal network
+
+Used By:
+-GUEST → internal networks
+
+
+
+
+Alias Name: DEPARTMENTS_NETWROKS
+Description: all departments vlan networks excluding DMZ
+Type: networks
+Value(s): 
+192.168.20.0/24
+192.168.30.0/24
+192.168.40.0/24
+192.168.50.0/24
+192.168.60.0/24
+192.168.10.0/24
+
+Purpose: to block dmz from communicating with internal zones/departments
+
+Used By:
+-DMZ → DEPARTMENTS
+
+
+
+
+Alias Name: WEB-SERVER
+Description: identify the webserver
+Type: Network
+Value(s): 
+192.168.70.134
+
+Purpose: to point the WAN to the webserver for website access
+
+Used By:
+-WAN → WEBSERVER
+
+
+
+
+Alias Name: WEB-PORTS
+Description: the needed webserver port for internet to webserver communication
+Type: ports
+Value(s): 
+80
+443
+
+Purpose: to enable port forwarding from the internet to the isolated web server
+
+Used By:
+-INETNET → WAN → WEBSERVER
+
+
+
+
+
+
+
