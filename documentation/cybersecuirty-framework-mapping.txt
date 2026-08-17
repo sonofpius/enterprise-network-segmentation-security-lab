@@ -1,0 +1,60 @@
+NIST CSF 2.0
+
+GOVERN
+- Defined network security policies
+- Established access-control requirements
+
+IDENTIFY
+- Identified network assets
+- Identified security zones
+- Identified trust boundaries
+
+PROTECT
+- VLAN segmentation
+- Firewall rules
+- Least-privilege network access
+- DMZ isolation
+
+DETECT
+- OPNsense firewall logs
+- Monitoring blocked connections
+
+RESPOND
+- Blocked unauthorized traffic
+- Investigated firewall events
+- Validated security controls
+
+RECOVER
+- Documented configuration
+- Maintained reproducible lab configuration
+
+
+
+
+CIS CONTROLS
+
+CIS Control 12 — Network Infrastructure Management
+
+Implementation:
+- Network segmentation
+- Firewall enforcement
+- DMZ architecture
+- Controlled network communication
+- Secure network architecture
+
+
+
+
+NIST SP 800-41
+
+Firewall Architecture
+- Network segmentation
+- Traffic filtering
+- Stateful firewall controls
+- DMZ implementation
+
+Firewall Policy
+- Deny-by-default
+- Explicit allow rules
+- Restricted inter-zone communication
+- Logging and monitoring

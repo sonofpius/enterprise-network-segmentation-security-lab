@@ -1,0 +1,16 @@
+SECURITY VALIDATION
+
+Objective:
+Validate that network segmentation and firewall policies
+prevent unauthorized communication between security zones.
+
+Result:
+
+✓ Internal networks can access authorized services.
+✓ Guest network can access the Internet.
+✓ Guest network cannot access internal networks.
+✓ HR cannot access Finance.
+✓ HR cannot access Executive.
+✓ DMZ cannot initiate connections to internal networks.
+✓ Internet users can access the authorized DMZ web service.
+✓ Unauthorized traffic is logged by OPNsense.

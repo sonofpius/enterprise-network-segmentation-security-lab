@@ -1,0 +1,10 @@
+# Lessons Learned
+
+How to design network security zones.
+How firewall rules enforce least privilege.
+How DMZ architecture reduces exposure.
+How to troubleshoot routing and firewall policies.
+How to validate security controls rather than assuming they work.
+How to interpret firewall logs.
+How to document security architecture.
+How networking concepts translate into cybersecurity controls.

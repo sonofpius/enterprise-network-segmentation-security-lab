@@ -1,0 +1,43 @@
+CONNECTIVITY TESTING
+
+Test 1
+Source: IT PC
+Destination: anywhere
+Expected: ALLOW
+Result: the IT_net was allowed to access the internet and other internal zones for trouble shooting and administrative purposes
+
+Test 2
+Source: HR PC
+Destination: Internet
+Expected: ALLOW
+Result: the HR_net was allowed to access the internet
+
+Test 3
+Source: HR PC
+Destination: Finance PC
+Expected: BLOCK
+Result: HR_net was blocked from communicating with the FINANCE_net
+
+Test 4
+Source: Guest PC
+Destination: Internal Network
+Expected: BLOCK
+Result: The guest_net was blocked from communicating with internal networks
+
+Test 5
+Source: Guest PC
+Destination: Internet
+Expected: ALLOW
+Result: the guest_net was allowed internet access
+
+Test 6
+Source: Internet
+Destination: DMZ Web Server web_ports (80/443)
+Expected: ALLOW
+Result: the web_server was accessed through the internet
+
+Test 7
+Source: DMZ
+Destination: Internal Network
+Expected: BLOCK
+Result: the dmz_net was blocked from communicating with the internal network.

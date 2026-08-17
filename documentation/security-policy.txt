@@ -1,0 +1,28 @@
+# Enterprise Network Security Policy
+
+## Default Policy
+
+All network traffic is denied unless explicitly authorized.
+
+## Internal Segmentation
+
+Departments are isolated from one another where required.
+
+## Guest Network
+
+Guest devices may access the Internet but cannot access
+internal enterprise networks.
+
+## DMZ
+
+Public-facing services are isolated from internal networks.
+
+## Administrative Network
+
+IT systems receive elevated access for network
+administration and troubleshooting.
+
+## Logging
+
+Firewall events are logged to support security monitoring
+and incident investigation.
