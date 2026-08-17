@@ -459,8 +459,6 @@ The web server should be reachable through the approved web services.
 
 ```
 
-
-
 This demonstrates that unnecessary services are not exposed.
 
 
@@ -475,7 +473,7 @@ Expected result:
 
 ```text
 
-IT/Admin → required enterprise networks = ALLOWED
+IT → required enterprise networks = ALLOWED
 
 ```
 
@@ -519,7 +517,7 @@ This validates the administrative access model.
 
 
 
-\*\*CIS Control 12 — Network Infrastructure Management\*\*
+**CIS Control 12 — Network Infrastructure Management**
 
 
 
@@ -527,7 +525,7 @@ The project applies principles of secure network architecture, segmentation and 
 
 
 
-\### NIST SP 800-41 Rev. 1
+### NIST SP 800-41 Rev. 1
 
 
 
@@ -535,103 +533,103 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-\---
+---
 
 
 
-\## Tools \& Technologies
+## Tools \& Technologies
 
 
 
-\* VMware Workstation
+* VMware Workstation
 
-\* OPNsense 
+* OPNsense 
 
-\* Ubuntu Server
+* Ubuntu Server
 
-\* Ubuntu Desktop
+* Ubuntu Desktop
 
-\* Windows endpoints
+* Windows endpoints
 
-\* Kali Linux
+* Kali Linux
 
-\* Nginx
+* Nginx
 
-\* DHCP
+* DHCP
 
-\* DNS
+* DNS
 
-\* NAT
+* NAT
 
-\* Firewall rules
+* Firewall rules
 
-\* ICMP
+* ICMP
 
-\* Nmap
+* Nmap
 
 
 
-\---
+---
 
 
 
-\## Evidence
+## Evidence
 
 
 
-\### Network Architecture
+### Network Architecture
 
 
 
-!\[Network Topology](screenshots/01-topology.png)
+![Network Topology](screenshots/01-topology.png)
 
 
 
-\### Firewall Interfaces
+### Firewall Interfaces
 
 
 
-!\[Firewall rules](screenshots/04-firewall-rules.png)
+![Firewall rules](screenshots/04-firewall-rules.png)
 
 
 
-\### Guest Isolation
+### Guest Isolation
 
 
 
-!\[Guest blocked traffic](screenshots/09-guest-blocked-traffic.png)
+![Guest blocked traffic](screenshots/09-guest-blocked-traffic.png)
 
 
 
-\### DMZ Configuration
+### DMZ Configuration
 
 
 
-!\[DMZ webserver](screenshots/06-dmz-webserver.png)
+![DMZ webserver](screenshots/06-dmz-webserver.png)
 
 
 
-\### NAT Port Forwarding
+### NAT Port Forwarding
 
 
 
-!\[NAT Port Forward](screenshots/08-nat-portforwarding.png)
+![NAT Port Forward](screenshots/08-nat-portforwarding.png)
 
 
 
-\### Firewall Logs
+### Firewall Logs
 
 
 
-!\[Firewall Logs](screenshots/05-firewall-logs.png)
+![Firewall Logs](screenshots/05-firewall-logs.png)
 
 
 
-\---
+---
 
 
 
-\## Lessons Learned
+## Lessons Learned
 
 
 
@@ -643,35 +641,35 @@ The testing phase was particularly important because it provided evidence that p
 
 
 
-\---
+---
 
 
 
-\## Future Improvements
+## Future Improvements
 
 
 
-\* Deploy Suricata IDS/IPS.
+* Deploy Suricata IDS/IPS.
 
-\* Integrate splunk/wazuh for centralized security monitoring.
+* Integrate splunk/wazuh for centralized security monitoring.
 
-\* Add VPN-based remote access.
+* Add VPN-based remote access.
 
-\* Implement centralized logging.
+* Implement centralized logging.
 
-\* Add vulnerability scanning.
+* Add vulnerability scanning.
 
-\* Add a second firewall for an advanced DMZ architecture.
+* Add a second firewall for an advanced DMZ architecture.
 
-\* Simulate compromised endpoints and investigate lateral-movement attempts.
-
-
-
-\---
+* Simulate compromised endpoints and investigate lateral-movement attempts.
 
 
 
-\## Security Disclaimer
+---
+
+
+
+## Security Disclaimer
 
 
 
@@ -683,19 +681,19 @@ Kali Linux was used only to validate the security controls implemented in the la
 
 
 
-\---
+---
 
 
 
-\## Project Status
+## Project Status
 
 
 
-\*\*Completed:\*\* Core segmentation, firewall policy, DMZ isolation, NAT configuration and security validation.
+**Completed:** Core segmentation, firewall policy, DMZ isolation, NAT configuration and security validation.
 
 
 
-\*\*Future work:\*\* IDS/IPS, centralized monitoring and additional attack/defense simulations.
+**Future work:** IDS/IPS, centralized monitoring and additional attack/defense simulations.
 
 
 
