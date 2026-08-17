@@ -110,7 +110,7 @@ Value(s):
 Purpose: to enable port forwarding from the internet to the isolated web server
 
 Used By:
--INETNET → WAN → WEBSERVER
+-ITERNET → WAN → WEBSERVER
 
 
 
