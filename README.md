@@ -1,8 +1,8 @@
-\# Enterprise Network Segmentation \& DMZ Security Lab
+# Enterprise Network Segmentation \& DMZ Security Lab
 
 
 
-\## Overview
+## Overview
 
 
 
@@ -18,41 +18,41 @@ The environment contains multiple departmental networks, a dedicated IT network,
 
 
 
-\---
+---
 
 
 
-\## Project Objectives
+## Project Objectives
 
 
 
-\* Design a segmented enterprise network.
+* Design a segmented enterprise network.
 
-\* Separate departments into security zones.
+* Separate departments into security zones.
 
-\* Implement a deny-by-default firewall policy.
+* Implement a deny-by-default firewall policy.
 
-\* Apply least-privilege network access.
+* Apply least-privilege network access.
 
-\* Isolate guest devices from internal resources.
+* Isolate guest devices from internal resources.
 
-\* Place a public-facing web server inside a DMZ.
+* Place a public-facing web server inside a DMZ.
 
-\* Allow only HTTP/HTTPS traffic from the WAN to the DMZ web server.
+* Allow only HTTP/HTTPS traffic from the WAN to the DMZ web server.
 
-\* Prevent DMZ systems from accessing internal networks.
+* Prevent DMZ systems from accessing internal networks.
 
-\* Test segmentation using Kali Linux, ICMP and Nmap.
+* Test segmentation using Kali Linux, ICMP and Nmap.
 
-\* Capture firewall logs as evidence that security controls are working.
-
-
-
-\---
+* Capture firewall logs as evidence that security controls are working.
 
 
 
-\## Enterprise Problem
+---
+
+
+
+## Enterprise Problem
 
 
 
@@ -60,7 +60,6 @@ A flat enterprise network can allow an attacker who compromises one workstation 
 
 
 
-For example:
 
 
 
@@ -68,17 +67,17 @@ For example:
 
 Compromised workstation
 
-&#x20;       ↓
+       ↓
 
-&#x20;    HR network
+    HR network
 
-&#x20;       ↓
+      ↓
 
-&#x20;   Finance network
+   Finance network
 
-&#x20;       ↓
+       ↓
 
-&#x20;  Executive systems
+  Executive systems
 
 ```
 
@@ -96,79 +95,79 @@ This project addresses these risks by separating the network into security zones
 
 
 
-\---
+---
 
 
 
-\## Security Architecture
+## Security Architecture
 
 
 
 ```text
 
-&#x20;                        INTERNET
+                        INTERNET
 
-&#x20;                            |
+                            |
 
-&#x20;                        WAN / NAT
+                        WAN / NAT
 
-&#x20;                            |
+                            |
 
-&#x20;                    +---------------+
+                    +---------------+
 
-&#x20;                    |   FIREWALL    |
+                    |   FIREWALL    |
 
-&#x20;                    | OPNsense      |
+                    | OPNsense      |
 
-&#x20;                    +---------------+
+                    +---------------+
 
-&#x20;                      /   /   |   \\
+                      /   /   |   \\
 
-&#x20;                     /   /    |    \\
+                    /   /    |    \\
 
-&#x20;                   IT  HR  FINANCE  GUEST
+                   IT  HR  FINANCE  GUEST
 
-&#x20;                   |   |     |        |
+                   |   |     |        |
 
-&#x20;                  AD  PC     PC      BYOD
+                  AD  PC     PC      BYOD
 
-&#x20;                  
+                  
 
-&#x20;                    SALES / ENGINEERING
+                    SALES / ENGINEERING
 
-&#x20;                          |
+                          |
 
-&#x20;                          PC
-
-
-
-&#x20;                        EXECUTIVE
-
-&#x20;                           |
-
-&#x20;                           PC
+                          PC
 
 
 
-&#x20;                           |
+                        EXECUTIVE
 
-&#x20;                          DMZ
+                          |
 
-&#x20;                           |
+                           PC
 
-&#x20;                   Ubuntu Web Server
 
-&#x20;                        Nginx
+
+                           |
+
+                          DMZ
+
+                           |
+
+                  Ubuntu Web Server
+
+                        Nginx
 
 ```
 
 
 
-\---
+---
 
 
 
-\## Network Segmentation
+## Network Segmentation
 
 
 
@@ -194,15 +193,15 @@ This project addresses these risks by separating the network into security zones
 
 
 
-\---
+---
 
 
 
-\## Security Controls Implemented
+## Security Controls Implemented
 
 
 
-\### 1. Network Segmentation
+### 1. Network Segmentation
 
 
 
@@ -214,7 +213,7 @@ This reduces unnecessary communication between departments and limits the potent
 
 
 
-\### 2. Deny-by-Default Firewall
+### 2. Deny-by-Default Firewall
 
 
 
@@ -230,7 +229,7 @@ Only explicitly required traffic is permitted.
 
 ALLOW required traffic
 
-&#x20;       +
+      +
 
 DENY everything else
 
@@ -238,7 +237,7 @@ DENY everything else
 
 
 
-\### 3. Guest Network Isolation
+### 3. Guest Network Isolation
 
 
 
@@ -256,7 +255,7 @@ Guest → Internal LAN   BLOCK
 
 
 
-\### 4. Department Isolation
+### 4. Department Isolation
 
 
 
@@ -264,7 +263,7 @@ Sensitive departments such as HR and Finance are prevented from communicating wh
 
 
 
-\### 5. DMZ Isolation
+### 5. DMZ Isolation
 
 
 
@@ -276,25 +275,25 @@ The public-facing Ubuntu web server is placed inside a dedicated DMZ.
 
 Internet
 
-&#x20;  |
+  |
 
-&#x20;  | HTTP / HTTPS
+  | HTTP / HTTPS
 
-&#x20;  ↓
+  ↓
 
-&#x20;Firewall
+Firewall
 
-&#x20;  |
+  |
 
-&#x20;  ↓
+  ↓
 
-&#x20;DMZ
+DMZ
 
-&#x20;  |
+  |
 
-&#x20;  ↓
+  ↓
 
-&#x20;Web Server
+Web Server
 
 ```
 
@@ -304,7 +303,7 @@ The DMZ is prevented from initiating unrestricted connections to internal corpor
 
 
 
-\### 6. NAT / Port Forwarding
+### 6. NAT / Port Forwarding
 
 
 
@@ -324,11 +323,11 @@ WAN:443  → DMZ Web Server:443
 
 
 
-\---
+---
 
 
 
-\## Enterprise Problems Solved
+## Enterprise Problems Solved
 
 
 
@@ -354,11 +353,11 @@ WAN:443  → DMZ Web Server:443
 
 
 
-\---
+---
 
 
 
-\## Testing \& Validation
+## Testing \& Validation
 
 
 
@@ -366,7 +365,7 @@ Security controls were validated instead of simply being configured.
 
 
 
-\### Test 1 — HR to Finance
+### Test 1 — HR to Finance
 
 
 
@@ -386,13 +385,13 @@ Evidence:
 
 
 
-\* ICMP test
+* ICMP test
 
-\* Firewall log
+* Firewall log
 
 
 
-\### Test 2 — Guest to Finance
+### Test 2 — Guest to Finance
 
 
 
@@ -412,13 +411,13 @@ Evidence:
 
 
 
-\* Nmap scan
+* Nmap scan
 
-\* Firewall log
+* Firewall log
 
 
 
-\### Test 3 — Guest to Internet
+### Test 3 — Guest to Internet
 
 
 
@@ -438,7 +437,7 @@ This confirms that the firewall is enforcing policy rather than simply blocking 
 
 
 
-\### Test 4 — WAN to Web Server
+### Test 4 — WAN to Web Server
 
 
 
@@ -466,7 +465,7 @@ This demonstrates that unnecessary services are not exposed.
 
 
 
-\### Test 6 — IT Access
+### Test 6 — IT Access
 
 
 
@@ -486,15 +485,15 @@ This validates the administrative access model.
 
 
 
-\---
+---
 
 
 
-\## Security Framework Mapping
+## Security Framework Mapping
 
 
 
-\### NIST Cybersecurity Framework 2.0
+### NIST Cybersecurity Framework 2.0
 
 
 
@@ -516,7 +515,7 @@ This validates the administrative access model.
 
 
 
-\### CIS Controls
+### CIS Controls
 
 
 
