@@ -418,6 +418,8 @@ Expected result:
 
 IT → required enterprise networks = ALLOWED
 
+
+
 Evidence:
 * [IT administrative access](Screenshots/16-IT-administrative-access.png)
 
