@@ -581,7 +581,7 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-![Network Topology](Screenshots/01-topology.png)
+[Network Topology](Screenshots/01-topology.png)
 
 
 
@@ -589,7 +589,7 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-![Firewall rules](Screenshots/04-firewall-rules.png)
+[Firewall rules](Screenshots/04-firewall-rules.png)
 
 
 
@@ -597,7 +597,7 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-![Guest blocked traffic](Screenshots/09-guest-blocked-traffic.png)
+[Guest blocked traffic](Screenshots/09-guest-blocked-traffic.png)
 
 
 
@@ -605,7 +605,7 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-![DMZ webserver](Screenshots/06-dmz-webserver.png)
+[DMZ webserver](Screenshots/06-dmz-webserver.png)
 
 
 
@@ -613,7 +613,7 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-![NAT Port Forward](Screenshots/08-nat-portforwarding.png)
+[NAT Port Forward](Screenshots/08-nat-portforwarding.png)
 
 
 
@@ -621,7 +621,7 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-![Firewall Logs](Screenshots/05-firewall-logs.png)
+[Firewall Logs](Screenshots/05-firewall-logs.png)
 
 
 
