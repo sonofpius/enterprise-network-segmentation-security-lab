@@ -211,9 +211,9 @@ Guest devices are allowed to access the Internet but are prevented from accessin
 
 
 
-Guest → Internet       ALLOW
+Guest - Internet       ALLOW
 
-Guest → Internal LAN   BLOCK
+Guest - Internal LAN   BLOCK
 
 
 
@@ -273,9 +273,9 @@ Only required public services are exposed:
 
 
 
-WAN:80   → DMZ Web Server:80
+WAN:80   - DMZ Web Server:80
 
-WAN:443  → DMZ Web Server:443
+WAN:443  - DMZ Web Server:443
 
 
 
@@ -323,7 +323,7 @@ Expected result:
 
 
 
-HR → Finance = BLOCKED
+HR - Finance = BLOCKED
 
 
 
@@ -350,7 +350,7 @@ Expected result:
 
 
 
-Guest → Finance = BLOCKED
+Guest - Finance = BLOCKED
 
 
 
@@ -376,7 +376,7 @@ Expected result:
 
 
 
-Guest → Internet = ALLOWED
+Guest - Internet = ALLOWED
 
 
 
@@ -396,7 +396,7 @@ Expected result:
 
 
 
-WAN → DMZ:80/443 = ALLOWED
+WAN - DMZ:80/443 = ALLOWED
 
 
 
