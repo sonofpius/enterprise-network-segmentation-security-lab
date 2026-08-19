@@ -360,25 +360,20 @@ Evidence:
 
 
 
-* Nmap scan
+* [Nmap scan](Screenshots/13-nmapscan-guest2HR.png)
 
-* Firewall log
+* [Firewall log](Screenshots/14-forewall-log-guest2HR.png)
 
 
 
 ### Test 3 — Guest to Internet
 
-
-
 Expected result:
-
-
-
-
 
 Guest - Internet = ALLOWED
 
-
+Evidence:
+* [guest internet access](Screenshots/15-guest2internet.png)
 
 
 
