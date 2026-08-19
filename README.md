@@ -339,7 +339,8 @@ Evidence:
 
 
 
-* ICMP test
+* [ICMP test](Screenshots/11-icmp-hr2finance.png)
+
 
 * Firewall log
 
