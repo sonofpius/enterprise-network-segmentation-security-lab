@@ -340,7 +340,7 @@ Evidence:
 
 
 
-### Test 2 — Guest to Finance
+### Test 2 — Guest to HR
 
 
 
@@ -350,7 +350,7 @@ Expected result:
 
 
 
-Guest - Finance = BLOCKED
+Guest - HR = BLOCKED
 
 
 
