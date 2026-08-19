@@ -1,4 +1,4 @@
-\# Enterprise Network Segmentation \& DMZ Security Lab — Lab Guide
+# Enterprise Network Segmentation \& DMZ Security Lab — Lab Guide
 
 
 
@@ -6,11 +6,11 @@ This guide documents the technical steps used to build and validate the Enterpri
 
 
 
-\---
+---
 
 
 
-\# 1. Prerequisites
+# 1. Prerequisites
 
 
 
@@ -20,23 +20,23 @@ Depending on the Hardware capability Not all VMs need to run simultaneously. VMs
 
 
 
-\## Required Software
+## Required Software
 
 
 
-\* VMware Workstation
+* VMware Workstation
 
-\* OPNsense
+* OPNsense
 
-\* Ubuntu Server
+* Ubuntu Server
 
-\* Ubuntu Desktop 
+* Ubuntu Desktop 
 
-\* Kali Linux
+* Kali Linux
 
-\* Windows Server
+* Windows Server
 
-\* Windows 11 pro
+* Windows 11 pro
 
 
 
@@ -44,11 +44,11 @@ Download all required software from their official sites
 
 
 
-\---
+---
 
 
 
-\# 2. Lab Architecture
+# 2. Lab Architecture
 
 
 
@@ -57,66 +57,46 @@ The lab contains the following virtual machines and network segments.
 
 
 | #  | System                  | Role                | Network                 |
-
 | -- | ----------------------- | ------------------- | ----------------------- |
-
 | 1  | OPNsense                | Firewall/Router     | WAN + Internal Networks |
-
 | 2  | IT                      | Administration / DC | 192.168.10.0/24         |
-
 | 3  | Executive Workstation   | Executive           | 192.168.20.0/24         |
-
 | 4  | HR Workstation          | HR                  | 192.168.30.0/24         |
-
 | 5  | Finance Workstation     | Finance             | 192.168.40.0/24         |
-
 | 6  | Sales Workstation       | Sales               | 192.168.50.0/24         |
-
 | 7  | Engineering Workstation | Engineering         | 192.168.60.0/24         |
-
 | 8  | Ubuntu Web Server       | DMZ                 | 192.168.70.0/24         |
-
 | 9  | Guest Device            | Guest/BYOD          | 192.168.80.0/24         |
-
 | 10 | Kali Linux              | Security Testing    | Guest/Testing Networks  |
 
 
 
-\---
+---
 
 
 
-\# 3. Network Addressing
+# 3. Network Addressing
 
 
 
 | Network     | Subnet          | Gateway      |
-
 | ----------- | ------------    | ---------    |
-
 | IT          | 192.168.10.0/24 | 192.168.10.1 |
-
 | Executive   | 192.168.20.0/24 | 192.168.20.1 |
-
 | HR          | 192.168.30.0/24 | 192.168.30.1 |
-
 | Finance     | 192.168.40.0/24 | 192.168.40.1 |
-
 | Sales       | 192.168.50.0/24 | 192.168.50.1 |
-
 | Engineering | 192.168.60.0/24 | 192.168.60.1 |
-
 | DMZ         | 192.168.70.0/24 | 192.168.70.1 |
-
 | Guest       | 192.168.80.0/24 | 192.168.80.1 |
 
 
 
-\---
+---
 
 
 
-\# 4. Phase 1 — Create VMware Virtual Networks
+# 4. Phase 1 — Create VMware Virtual Networks
 
 
 
@@ -124,7 +104,7 @@ Open:
 
 
 
-\*\*VMware Workstation → Edit → Virtual Network Editor\*\*
+**VMware Workstation → Edit → Virtual Network Editor**
 
 
 
@@ -132,7 +112,7 @@ Select:
 
 
 
-\*\*Change Settings\*\*
+**Change Settings**
 
 
 
@@ -178,11 +158,11 @@ For each internal VMnet:
 
 
 
-\* Set the network type to \*\*Host-only\*\*
+* Set the network type to **Host-only**
 
-\* Disable VMware's local DHCP service
+* Disable VMware's local DHCP service
 
-\* Allow OPNsense to provide DHCP
+* Allow OPNsense to provide DHCP
 
 
 
@@ -190,11 +170,11 @@ This prevents two DHCP servers from operating on the same segment.
 
 
 
-\---
+---
 
 
 
-\# 5. Phase 2 — Deploy OPNsense
+# 5. Phase 2 — Deploy OPNsense
 
 
 
@@ -202,27 +182,27 @@ Create a new virtual machine.
 
 
 
-&#x20;starting configuration:
+starting configuration:
 
 
 
-\* 1–2 vCPU
+* 1–2 vCPU
 
-\* 1–2 GB RAM
+* 1–2 GB RAM
 
-\* 8–20 GB disk
+* 8–20 GB disk
 
-\* FreeBSD 64-bit or equivalent
+* FreeBSD 64-bit or equivalent
 
-\* OPNsense ISO attached
-
-
-
-\---
+* OPNsense ISO attached
 
 
 
-\## Network Adapters
+---
+
+
+
+## Network Adapters
 
 
 
@@ -260,11 +240,11 @@ The exact interface names may appear as `emX` or `vtnetX`.
 
 
 
-\---
+---
 
 
 
-\# 6. Phase 3 — Assign OPNsense Interfaces
+# 6. Phase 3 — Assign OPNsense Interfaces
 
 
 
@@ -328,11 +308,11 @@ Guest         192.168.80.1
 
 
 
-\---
+---
 
 
 
-\# 7. Phase 4 — Access the OPNsense Web Interface
+# 7. Phase 4 — Access the OPNsense Web Interface
 
 
 
@@ -360,11 +340,11 @@ Complete the initial configuration wizard.
 
 
 
-\---
+---
 
 
 
-\# 8. Phase 5 — Configure DHCP
+# 8. Phase 5 — Configure DHCP
 
 
 
@@ -386,7 +366,7 @@ DHCP Range: 192.168.20.100 – 192.168.20.200
 
 ```
 
-NOTE: The IT network  will get a static IP because it is hosting active directory and you want the other clients to locate active directory domain.
+**NOTE: The IT network  will get a static IP because it is hosting active directory and you want the other clients to locate active directory domain.**
 
 
 
@@ -414,11 +394,11 @@ Guest workstation    → 192.168.80.x
 
 
 
-\---
+---
 
 
 
-\# 9. Phase 6 — Configure DNS
+# 9. Phase 6 — Configure DNS
 
 
 
@@ -434,11 +414,11 @@ Verify DNS resolution from the endpoints.
 
 
 
-\---
+---
 
 
 
-\# 10. Phase 7 — Deploy Department VMs
+# 10. Phase 7 — Deploy Department VMs
 
 
 
@@ -476,15 +456,15 @@ Verify that each machine receives an IP address from the correct subnet.
 
 
 
-\---
+---
 
 
 
-\# 11. Phase 8 — Configure IT
+# 11. Phase 8 — Configure IT
 
 
 
-&#x20;install Windows Server and configure it as a domain controller.
+install Windows Server and configure it as a domain controller.
 
 
 
@@ -500,21 +480,21 @@ Verify:
 
 
 
-\* DNS resolution
+* DNS resolution
 
-\* Domain connectivity
+* Domain connectivity
 
-\* Authentication
+* Authentication
 
-\* Required AD services
-
-
-
-\---
+* Required AD services
 
 
 
-\# 12. Phase 9 — Deploy the DMZ Web Server
+---
+
+
+
+# 12. Phase 9 — Deploy the DMZ Web Server
 
 
 
@@ -590,11 +570,11 @@ http://192.168.70.150
 
 
 
-\---
+---
 
 
 
-\# 13. Phase 10 — Configure Firewall Rules
+# 13. Phase 10 — Configure Firewall Rules
 
 
 
@@ -606,7 +586,7 @@ Only required traffic should be explicitly permitted.
 
 
 
-\## IT
+## IT
 
 
 
@@ -624,7 +604,7 @@ IT → Internet = ALLOW
 
 
 
-\## Department Networks
+## Department Networks
 
 
 
@@ -650,11 +630,11 @@ Apply equivalent rules to the other department networks according to the require
 
 
 
-\---
+---
 
 
 
-\# 14. Phase 11 — Configure Guest Isolation
+# 14. Phase 11 — Configure Guest Isolation
 
 
 
@@ -714,11 +694,11 @@ Executive
 
 
 
-\---
+---
 
 
 
-\# 15. Phase 12 — Configure DMZ Rules
+# 15. Phase 12 — Configure DMZ Rules
 
 
 
@@ -756,11 +736,11 @@ Do not create rules allowing unrestricted DMZ access to internal networks.
 
 
 
-\---
+---
 
 
 
-\# 16. Phase 13 — Configure NAT / Port Forwarding
+# 16. Phase 13 — Configure NAT / Port Forwarding
 
 
 
@@ -788,7 +768,7 @@ Create the HTTPS port forward:
 
 WAN TCP/443
 
-&#x20;     ↓
+   ↓
 
 DMZ Web Server TCP/443
 
@@ -800,11 +780,11 @@ Do not create an SSH port forward unless it is specifically required for an appr
 
 
 
-\---
+---
 
 
 
-\# 17. Phase 14 — Test Basic Connectivity
+# 17. Phase 14 — Test Basic Connectivity
 
 
 
@@ -856,15 +836,15 @@ ping 192.168.40.1
 
 
 
-\---
+---
 
 
 
-\# 18. Phase 15 — Test Department Isolation
+# 18. Phase 15 — Test Department Isolation
 
 
 
-\## HR → Finance
+## HR → Finance
 
 
 
@@ -896,11 +876,11 @@ Check the firewall logs for the blocked connection.
 
 
 
-\---
+---
 
 
 
-\## HR → IT
+## HR → IT
 
 
 
@@ -932,11 +912,11 @@ if ICMP has been permitted by the firewall policy.
 
 
 
-\---
+---
 
 
 
-\# 19. Phase 16 — Test Guest Isolation with Kali
+# 19. Phase 16 — Test Guest Isolation with Kali
 
 
 
@@ -984,11 +964,11 @@ Review the firewall logs to verify the blocked traffic.
 
 
 
-\---
+---
 
 
 
-\# 20. Phase 17 — Test Guest Internet Access
+# 20. Phase 17 — Test Guest Internet Access
 
 
 
@@ -1020,11 +1000,11 @@ Guest → Internet = ALLOWED
 
 
 
-\---
+---
 
 
 
-\# 21. Phase 18 — Test WAN → DMZ
+# 21. Phase 18 — Test WAN → DMZ
 
 
 
@@ -1076,11 +1056,11 @@ HTTPS connection succeeds
 
 
 
-\---
+---
 
 
 
-\# 22. Phase 19 — optional Test Unauthorized WAN Services
+# 22. Phase 19 — optional Test Unauthorized WAN Services
 
 
 
@@ -1112,11 +1092,11 @@ This verifies that unnecessary services are not exposed.
 
 
 
-\---
+---
 
 
 
-\# 23. Phase 20 — Review Firewall Logs
+# 23. Phase 20 — Review Firewall Logs
 
 
 
@@ -1132,21 +1112,21 @@ Check:
 
 
 
-\* Source IP
+* Source IP
 
-\* Destination IP
+* Destination IP
 
-\* Protocol
+* Protocol
 
-\* Source port
+* Source port
 
-\* Destination port
+* Destination port
 
-\* Action
+* Action
 
-\* Interface
+* Interface
 
-\* Timestamp
+* Timestamp
 
 
 
@@ -1154,11 +1134,11 @@ Capture screenshots of relevant blocked and permitted traffic.
 
 
 
-\---
+---
 
 
 
-\# 24. Phase 21 — Evidence Collection
+# 24. Phase 21 — Evidence Collection
 
 
 
@@ -1166,71 +1146,71 @@ Capture evidence for the project documentation.
 
 
 
-\## Infrastructure
+## Infrastructure
 
 
 
-\* VMware VM configuration
+* VMware VM configuration
 
-\* VMware Virtual Network Editor
+* VMware Virtual Network Editor
 
-\* OPNsense interface assignments
+* OPNsense interface assignments
 
-\* IP addressing
-
-
-
-\## Firewall
+* IP addressing
 
 
 
-\* Department firewall rules
-
-\* Guest rules
-
-\* DMZ rules
-
-\* NAT/port forwarding
+## Firewall
 
 
 
-\## DMZ
+* Department firewall rules
+
+* Guest rules
+
+* DMZ rules
+
+* NAT/port forwarding
 
 
 
-\* Ubuntu server IP
-
-\* Nginx status
-
-\* Web page
-
-\* WAN → DMZ access
+## DMZ
 
 
 
-\## Testing
+* Ubuntu server IP
+
+* Nginx status
+
+* Web page
+
+* WAN → DMZ access
 
 
 
-\* HR → Finance blocked
-
-\* Guest → Finance blocked
-
-\* Guest → Internet allowed
-
-\* WAN → Web Server allowed
-
-\* WAN → SSH blocked
-
-\* Firewall log evidence
+## Testing
 
 
 
-\---
+* HR → Finance blocked
+
+* Guest → Finance blocked
+
+* Guest → Internet allowed
+
+* WAN → Web Server allowed
+
+* WAN → SSH blocked
+
+* Firewall log evidence
 
 
 
-\# 25. Final Validation Checklist
+---
+
+
+
+# 25. Final Validation Checklist
 
 
 
@@ -1238,47 +1218,47 @@ Use this checklist after completing the lab.
 
 
 
-\* \[ ] OPNsense WAN is operational
+* [ ] OPNsense WAN is operational
 
-\* \[ ] All internal interfaces are configured
+* [ ] All internal interfaces are configured
 
-\* \[ ] DHCP is working
+* [ ] DHCP is working
 
-\* \[ ] DNS is working
+* [ ] DNS is working
 
-\* \[ ] Department VMs receive correct IP addresses
+* [ ] Department VMs receive correct IP addresses
 
-\* \[ ] IT/Admin access works
+* [ ] IT/Admin access works
 
-\* \[ ] HR → Finance is blocked
+* [ ] HR → Finance is blocked
 
-\* \[ ] Guest → Internal networks is blocked
+* [ ] Guest → Internal networks is blocked
 
-\* \[ ] Guest → Internet works
+* [ ] Guest → Internet works
 
-\* \[ ] WAN → HTTP works
+* [ ] WAN → HTTP works
 
-\* \[ ] WAN → HTTPS works
+* [ ] WAN → HTTPS works
 
-\* \[ ] WAN → SSH is blocked
+* [ ] WAN → SSH is blocked
 
-\* \[ ] DMZ → Internal networks is blocked
+* [ ] DMZ → Internal networks is blocked
 
-\* \[ ] Firewall logs show blocked traffic
+* [ ] Firewall logs show blocked traffic
 
-\* \[ ] Required screenshots have been captured
-
-
-
-\---
+* [ ] Required screenshots have been captured
 
 
 
-\# 26. Troubleshooting
+---
 
 
 
-\## VM has no network connection
+# 26. Troubleshooting
+
+
+
+## VM has no network connection
 
 
 
@@ -1302,11 +1282,11 @@ Make sure the VM is not accidentally connected to NAT or Bridged networking.
 
 
 
-\---
+---
 
 
 
-\## Firewall has no Internet access
+## Firewall has no Internet access
 
 
 
@@ -1318,11 +1298,11 @@ Verify:
 
 OPNsense WAN
 
-&#x20;     ↓
+     ↓
 
 VMnet8
 
-&#x20;     ↓
+     ↓
 
 VMware NAT
 
@@ -1334,11 +1314,11 @@ Confirm that the WAN adapter is connected to the correct VMware network.
 
 
 
-\---
+---
 
 
 
-\## DHCP is not working
+## DHCP is not working
 
 
 
@@ -1350,11 +1330,11 @@ OPNsense should be the DHCP server for the internal segment.
 
 
 
-\---
+---
 
 
 
-\## Traffic is unexpectedly blocked
+## Traffic is unexpectedly blocked
 
 
 
@@ -1362,27 +1342,27 @@ Check:
 
 
 
-1\. Source interface
+1. Source interface
 
-2\. Destination IP
+2. Destination IP
 
-3\. Destination port
+3. Destination port
 
-4\. Firewall rule order
+4. Firewall rule order
 
-5\. Gateway
+5. Gateway
 
-6\. NAT configuration
+6. NAT configuration
 
-7\. Firewall logs
-
-
-
-\---
+7. Firewall logs
 
 
 
-\## Web server is unreachable
+---
+
+
+
+## Web server is unreachable
 
 
 
@@ -1392,29 +1372,29 @@ Check:
 
 ```text
 
-1\. Web server IP
+1. Web server IP
 
-2\. Default gateway
+2. Default gateway
 
-3\. Nginx status
+3. Nginx status
 
-4\. DMZ firewall rules
+4. DMZ firewall rules
 
-5\. NAT/port-forward rule
+5. NAT/port-forward rule
 
-6\. WAN firewall rule
+6. WAN firewall rule
 
-7\. Firewall logs
+7. Firewall logs
 
 ```
 
 
 
-\---
+---
 
 
 
-\# 27. Lab Safety
+# 27. Lab Safety
 
 
 
