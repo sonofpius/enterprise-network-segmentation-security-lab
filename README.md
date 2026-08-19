@@ -581,7 +581,7 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-![Network Topology](screenshots/01\_topology.png)
+![Network Topology](Screenshots/01_topology.png)
 
 
 
@@ -589,7 +589,7 @@ The project applies firewall policy concepts involving traffic control between n
 
 
 
-![Firewall rules](screenshots/04-firewall-rules.png)
+![Firewall rules](Screenshots/04-firewall-rules.png)
 
 
 
