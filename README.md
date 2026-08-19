@@ -190,15 +190,15 @@ Only explicitly required traffic is permitted.
 
 
 
-```tex
+
+
+
 
 ALLOW required traffic
-
-      +
-
+         +
 DENY everything else
 
-```
+
 
 
 
@@ -210,13 +210,11 @@ Guest devices are allowed to access the Internet but are prevented from accessin
 
 
 
-```text
 
 Guest → Internet       ALLOW
 
 Guest → Internal LAN   BLOCK
 
-```
 
 
 
@@ -236,13 +234,12 @@ The public-facing Ubuntu web server is placed inside a dedicated DMZ.
 
 
 
-```text
 
 Internet
 
-  |
+   |
 
-  | HTTP / HTTPS
+   | HTTP / HTTPS
 
   ↓
 
@@ -260,7 +257,6 @@ DMZ
 
 Web Server
 
-```
 
 
 
@@ -276,13 +272,11 @@ Only required public services are exposed:
 
 
 
-```text
 
 WAN:80   → DMZ Web Server:80
 
 WAN:443  → DMZ Web Server:443
 
-```
 
 
 
@@ -327,11 +321,11 @@ Expected result:
 
 
 
-```text
+
 
 HR → Finance = BLOCKED
 
-```
+
 
 
 
@@ -354,11 +348,11 @@ Expected result:
 
 
 
-```text
+
 
 Guest → Finance = BLOCKED
 
-```
+
 
 
 
@@ -380,11 +374,11 @@ Expected result:
 
 
 
-```text
+
 
 Guest → Internet = ALLOWED
 
-```
+
 
 
 
@@ -400,11 +394,11 @@ Expected result:
 
 
 
-```text
+
 
 WAN → DMZ:80/443 = ALLOWED
 
-```
+
 
 
 
@@ -412,7 +406,7 @@ The web server should be reachable through the approved web services.
 
 
 
-```
+
 
 This demonstrates that unnecessary services are not exposed.
 
@@ -426,11 +420,10 @@ Expected result:
 
 
 
-```text
 
 IT → required enterprise networks = ALLOWED
 
-```
+
 
 
 
