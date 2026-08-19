@@ -407,7 +407,7 @@ This demonstrates that unnecessary services are not exposed.
 
 
 
-### Test 6 — IT Access
+### Test 5 — IT Access
 
 
 
@@ -418,6 +418,8 @@ Expected result:
 
 IT → required enterprise networks = ALLOWED
 
+Evidence:
+* [IT administrative access](Screenshots/16-IT-administrative-access.png)
 
 
 
