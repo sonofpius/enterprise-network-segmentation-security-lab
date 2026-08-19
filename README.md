@@ -65,19 +65,26 @@ A flat enterprise network can allow an attacker who compromises one workstation 
 
 ```text
 
-Compromised workstation
+┌──────────────────────────────┐
+│  User Workstation Compromised│
+└───────────────┬──────────────┘
+                ↓
+┌────────────────────────────────────────┐
+│     Flat Network (No Segmentation)     │
+└───────────────┬────────────────────────┘
+                ↓
+┌────────────────────────────────────────┐
+│  Departmental Systems (HR / Finance)   │
+└───────────────┬────────────────────────┘
+                ↓
+┌──────────────────────────────┐
+│   Admin & Executive Systems  │
+└───────────────┬──────────────┘
+                ↓
+┌──────────────────────────────┐
+│ High-Value Assets & Data     │
+└──────────────────────────────┘
 
-       ↓
-
-    HR network
-
-      ↓
-
-   Finance network
-
-       ↓
-
-  Executive systems
 
 ```
 
@@ -103,66 +110,33 @@ This project addresses these risks by separating the network into security zones
 
 
 
-```text
+                                                         ┌──────────┐
+                                                         │ internet │
+                                                         └──────────┘
+                                                               |
+                                                         ┌──────────┐
+                                                         │  WAN/NAT │
+                                                         └──────────┘
+                                                               |
+                                                    ┌────────────────────┐
+                                                    │ Opnsense firewall  │________________________________________________________________________________
+                                                    └──────────┬─────────┘                                                                               |
+                                                    /    /     |  \  \  \  \______________________________________________________________________       |
+                                                  /    /       |    \  \  \__________________________________________________                    |       |
+                 ┌──────────────────┐           /     /        |     \  \________________________________                    |                   |       |
+                 │     IT           │_________/      /         |      \_____________                     |                   |                   |       |
+                 │ (windowsever/AD) │┌──────────────────┐┌──────────────────┐       |                    |                   |                   |       |
+                 └──────────────────┘│   Executives     ││        HR        │┌──────────────────┐ ┌─────────────────┐ ┌─────────────────┐ ┌────────────┐ |   
+                                     │ (windows 11 pc)  ││ (windows 11 pc)  ││    FINANCE       │ │  SALES          │ │ ENGINEERING     │ │    DMZ     │ |
+                                     └──────────────────┘└──────────────────┘│ (windows 11 pc)  │ │(windows 11 pc)  │ │(Ubuntu endpoint)│ │ubuntuserver│ |
+                                                                             └──────────────────┘ └─────────────────┘ └─────────────────┘ └────────────┘ |
+                                                                                                                                                         | 
+                                                                                                                                               ┌────────────┐
+                                                                                                                                               │    GUEST   │ 
+                                                                                                                                               │     BYOD   │     
+                                                                                                                                               └────────────┘
 
-                        INTERNET
-
-                            |
-
-                        WAN / NAT
-
-                            |
-
-                    +---------------+
-
-                    |   FIREWALL    |
-
-                    | OPNsense      |
-
-                    +---------------+
-
-                      /   /   |   \\
-
-                    /   /    |    \\
-
-                   IT  HR  FINANCE  GUEST
-
-                   |   |     |        |
-
-                  AD  PC     PC      BYOD
-
-                  
-
-                    SALES / ENGINEERING
-
-                          |
-
-                          PC
-
-
-
-                        EXECUTIVE
-
-                          |
-
-                           PC
-
-
-
-                           |
-
-                          DMZ
-
-                           |
-
-                  Ubuntu Web Server
-
-                        Nginx
-
-```
-
-
-
+                   
 ---
 
 
@@ -172,23 +146,14 @@ This project addresses these risks by separating the network into security zones
 
 
 | Segment         | Network         | Purpose                  |
-
 | --------------- | --------------- | ------------------------ |
-
 | IT              | 192.168.10.0/24 | Administration           |
-
 | Executive       | 192.168.20.0/24 | Executive users          |
-
 | HR              | 192.168.30.0/24 |  Human Resources         |
-
 | Finance         | 192.168.40.0/24 | Financial system         |
-
 | Sales           | 192.168.50.0/24 | Sales operations         |
-
 | Engineering     | 192.168.60.0/24 |Engineering/Development   |
-
 |  DMZ            | 192.168.70.0/24 |  Public-facing web server|
-
 |  Guest          | 192.168.80.0/24 | Guest/BYOD devices       |
 
 
@@ -225,7 +190,7 @@ Only explicitly required traffic is permitted.
 
 
 
-```text
+```tex
 
 ALLOW required traffic
 
@@ -329,27 +294,16 @@ WAN:443  → DMZ Web Server:443
 
 ## Enterprise Problems Solved
 
-
-
-| Problem                              | Security Control     | Result                       |
-
-| ------------------------------------ | -------------------- | ---------------------------- |
-
-| Flat network                         | Network segmentation | Reduced lateral movement     |
-
-| Guest access to internal systems     | Guest isolation      | Internal resources protected |
-
-| Excessive access between departments | Firewall ACL/rules   | Least privilege              |
-
-| Public web server exposure           | DMZ                  | Reduced blast radius         |
-
-| DMZ-to-LAN pivoting                  | DMZ isolation        | Internal networks protected  |
-
-| Unrestricted administrative access   | IT/Admin segment     | Centralized administration   |
-
-| Unknown effectiveness of controls    | Kali testing         | Controls validated           |
-
-| Lack of security evidence            | Firewall logs        | Test results documented      |
+| Problem                               | Security Control            | Result                               |
+|---------------------------------------|------------------------------|---------------------------------------|
+| Flat network                          | Network segmentation         | Reduced lateral movement              |
+| Guest access to internal systems      | Guest isolation              | Internal resources protected          |
+| Excessive inter‑department access     | Firewall ACLs / rules        | Enforced least privilege              |
+| Public web server exposure            | DMZ placement                | Reduced blast radius                  |
+| DMZ‑to‑LAN pivoting                   | DMZ isolation                | Prevented internal network pivoting   |
+| Unrestricted administrative access    | Dedicated IT/Admin segment   | Centralized and controlled admin ops  |
+| Unknown effectiveness of controls     | Kali Linux testing           | Controls validated through attack sims|
+| Lack of security evidence             | Firewall logging             | Documented security outcomes          |
 
 
 
@@ -496,19 +450,12 @@ This validates the administrative access model.
 
 
 | Function | Project Application                                      |
-
 | -------- | -------------------------------------------------------- |
-
 | Govern   | Network security requirements and policy                 |
-
 | Identify | Identification of departments, systems and network zones |
-
 | Protect  | Segmentation, firewall controls, DMZ and least privilege |
-
 | Detect   | Firewall logs and blocked connection monitoring          |
-
 | Respond  | Unauthorized traffic is automatically blocked by policy  |
-
 | Recover  | Not implemented as part of the current project           |
 
 
